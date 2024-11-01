@@ -20,10 +20,10 @@ app.use((req, res, next) => {
 });
 
 // Import models
-require('./models/user.model');
+// require('./models/user.model');
 require('./models/question.model');
-require('./models/survey.model');
-require('./models/response.model');
+// require('./models/survey.model');
+// require('./models/response.model');
 
 // Routes
 app.use('/api/users', userRoutes); // Ensure this path is correct

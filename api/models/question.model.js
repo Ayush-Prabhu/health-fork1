@@ -84,7 +84,77 @@ const surveySchema = new mongoose.Schema({
   timestamps: true
 });
 
+const responseSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true
+  },
+  surveyId: {
+    type: String,
+    required: true
+  },
+  responses: [
+    {
+      questionId: {
+        type: String,
+        required: true
+      },
+      answer: {
+        type: mongoose.Mixed, // This allows for various types of responses (string for text, array for multiple choice, etc.)
+        required: true
+      }
+    }
+  ]
+}, {
+  timestamps: true
+});
+
+
+const UserSchema = new mongoose.Schema({
+  name: {
+      type: String,
+      required: true
+  },
+  dob: {
+      type: Date,
+      required: true
+  },
+  email: {
+      type: String,
+      required: true,
+      unique: true
+  },
+  password: {
+      type: String,
+      required: true
+  },
+  username: {
+      type: String,
+      required: true,
+      unique: true
+  },
+  city: {
+      type: String,
+      required: true
+  },
+  state: {
+      type: String,
+      required: true
+  },
+  country: {
+      type: String,
+      required: true
+  },
+  postal_code: {
+      type: String,
+      required: true
+  }
+});
+
+const Response = mongoose.model('Response', responseSchema);
+const User = mongoose.model('User', UserSchema);
+
 const Question = mongoose.model('Question', questionSchema);
 const Survey = mongoose.model('Survey', surveySchema);
 
-module.exports = { Question, Survey };
+module.exports = { Question, Survey, Response, User };

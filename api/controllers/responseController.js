@@ -1,5 +1,5 @@
-const Response = require('../models/response.model');
-const { Survey } = require('../models/question.model');
+// const Response = require('../models/response.model');
+const { Response, Survey } = require('../models/question.model');
 
 const getSurveyResponses = async (req, res) => {
   const { surveyId } = req.params;
